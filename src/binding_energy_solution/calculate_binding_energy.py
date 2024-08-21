@@ -1,3 +1,9 @@
+"""
+Module containing functions to calculate the binding energy of a pair or trio
+of particles.
+"""
+
+
 def calc_pair_binding_energy(separation_distance):
     """
     Calculate the binding energy of a pair of particles separated by a given distance.

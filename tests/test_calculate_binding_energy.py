@@ -1,5 +1,4 @@
-import pytest
-import binding_energy_solution.calculate_binding_energy as calculate_binding_energy
+from binding_energy_solution import calculate_binding_energy
 
 
 def test_calc_pair_binding_energy():
