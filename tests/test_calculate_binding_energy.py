@@ -7,3 +7,10 @@ def test_calc_pair_binding_energy():
     r = 6.82e-10  # separation distance in m
     u = -1.0e-22  # binding energy in J
     assert calculate_binding_energy.calc_pair_binding_energy(r) == u
+
+
+def test_calc_trio_binding_energy():
+    """Test that function returns 3x the result for pair binding energy given by example in Technical Exercise"""
+    r = 6.82e-10  # separation distance in m
+    u = -1.0e-22  # binding energy in J
+    assert calculate_binding_energy.calc_trio_binding_energy(r) == 3 * u

@@ -1,4 +1,3 @@
-
 def calc_pair_binding_energy(separation_distance):
     """
     Calculate the binding energy of a pair of particles separated by a given distance.
@@ -27,6 +26,7 @@ def calc_pair_binding_energy(separation_distance):
 
     return pair_binding_energy
 
+
 def calc_trio_binding_energy(separation_1_2, separation_1_3, separation_2_3):
     """
     Calculate the binding energy of a trio of particles separated by given distances.
@@ -53,5 +53,3 @@ def calc_trio_binding_energy(separation_1_2, separation_1_3, separation_2_3):
     trio_binding_energy = binding_energy_1_2 + binding_energy_1_3 + binding_energy_2_3
 
     return trio_binding_energy
-
-
