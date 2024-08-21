@@ -2,7 +2,7 @@
 Module containing functions to calculate the binding energy of a pair or trio
 of particles.
 """
-import binding_energy_solution.constants as constants
+import binding_energy_solution.constants as constants 
 
 def calc_pair_binding_energy(epsilon, sigma, separation_distance):
     """
@@ -58,11 +58,11 @@ def calc_trio_binding_energy(epsilon, sigma, separation_1_2, separation_1_3, sep
 
 def main():
     result_trio_binding_energy = calc_trio_binding_energy(
-        constants.Epsilon,
-        constants.Sigma,
-        constants.sep_1_2,
-        constants.sep_1_3,
-        constants.sep_2_3,
+        constants.EPSILON,
+        constants.SIGMA,
+        constants.SEP_1_2,
+        constants.SEP_1_3,
+        constants.SEP_2_3,
     )
     print(result_trio_binding_energy)
 
