@@ -2,7 +2,9 @@
 Module containing functions to calculate the binding energy of a pair or trio
 of particles.
 """
+import binding_energy_solution.utils.logger as logger
 
+log = logger.start_logging()
 
 def calc_pair_binding_energy(separation_distance):
     """
@@ -22,6 +24,10 @@ def calc_pair_binding_energy(separation_distance):
     # Constants
     epsilon = 1.65e-21  # J
     sigma = 3.41e-10  # m
+    
+    if separation_distance == 0:
+        log.critical("Separation distance cannot be zero")
+        raise ValueError( "Separation distance cannot be zero")    
 
     # Calculate the binding energy
     pair_binding_energy = (
@@ -51,7 +57,9 @@ def calc_trio_binding_energy(separation_1_2, separation_1_3, separation_2_3):
     float
         The binding energy of the trio of particles in joules.
     """
-
+    if separation_1_2 or separation_1_3 or separation_2_3 == 0:
+        log.critical("Separation distance cannot be zero")
+        raise ValueError( "Separation distance cannot be zero")
     binding_energy_1_2 = calc_pair_binding_energy(separation_1_2)
     binding_energy_1_3 = calc_pair_binding_energy(separation_1_3)
     binding_energy_2_3 = calc_pair_binding_energy(separation_2_3)
