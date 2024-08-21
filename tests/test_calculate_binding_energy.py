@@ -19,4 +19,4 @@ def test_calc_trio_binding_energy():
     by example in Technical Exercise"""
     r = 6.82e-10  # separation distance in m
     u = -1.0e-22  # binding energy in J
-    assert calc_trio_binding_energy(r) == 3 * u
+    assert calc_trio_binding_energy(r, r, r) == 3 * u
