@@ -4,7 +4,7 @@ of particles.
 """
 
 
-def calc_pair_binding_energy(separation_distance):
+def calc_pair_binding_energy(epsilon, sigma, separation_distance):
     """
     Calculate the binding energy of a pair of particles separated by a given distance.
 
@@ -19,10 +19,6 @@ def calc_pair_binding_energy(separation_distance):
         The binding energy of the pair of particles in joules.
     """
 
-    # Constants
-    epsilon = 1.65e-21  # J
-    sigma = 3.41e-10  # m
-
     # Calculate the binding energy
     pair_binding_energy = (
         4
@@ -33,7 +29,7 @@ def calc_pair_binding_energy(separation_distance):
     return pair_binding_energy
 
 
-def calc_trio_binding_energy(separation_1_2, separation_1_3, separation_2_3):
+def calc_trio_binding_energy(epsilon, sigma, separation_1_2, separation_1_3, separation_2_3):
     """
     Calculate the binding energy of a trio of particles separated by given distances.
 
@@ -52,10 +48,39 @@ def calc_trio_binding_energy(separation_1_2, separation_1_3, separation_2_3):
         The binding energy of the trio of particles in joules.
     """
 
-    binding_energy_1_2 = calc_pair_binding_energy(separation_1_2)
-    binding_energy_1_3 = calc_pair_binding_energy(separation_1_3)
-    binding_energy_2_3 = calc_pair_binding_energy(separation_2_3)
+    binding_energy_1_2 = calc_pair_binding_energy(epsilon, sigma, separation_1_2)
+    binding_energy_1_3 = calc_pair_binding_energy(epsilon, sigma, separation_1_3)
+    binding_energy_2_3 = calc_pair_binding_energy(epsilon, sigma, separation_2_3)
 
     trio_binding_energy = binding_energy_1_2 + binding_energy_1_3 + binding_energy_2_3
 
     return trio_binding_energy
+
+def parse_cli_arguments(arguments: list[str] = None) -> Path:
+    """Parses the arguments to get the config file path."""
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument(
+        "config_path",
+        type=Path,
+        default=Path("conf.json"),
+        nargs="?",
+        help="Path to the config file. Defaults to ./conf.json",
+    )
+    return parser.parse_args(args=arguments).config_path
+
+def main():
+    config_path = parse_cli_arguments()
+    config = json.loads(config_path.read_text("UTF-8"))["binding_energy_constants"]
+    
+    trio_object_binding_energy = calc_trio_binding_energy(
+        config["epsilon"],
+        config["sigma"],
+        config["sep_1_2"],
+        config["sep_1_3"],
+        config["sep_2_3"],
+    )
+    print(f'The binding energy of the 3 objects is {trio_object_binding_energy}')
+
+if __name__ == "__main__":
+    main()
