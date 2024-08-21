@@ -1,3 +1,5 @@
+"""Unit tests for binding_energy_solution.calculate_binding_energy module"""
+
 from binding_energy_solution.calculate_binding_energy import (
     calc_pair_binding_energy,
     calc_trio_binding_energy,
