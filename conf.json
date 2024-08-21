@@ -1,0 +1,6 @@
+{
+  "binding_energy_constants": {
+    "epsilon" : "1.65e-21",
+    "sigma" : "3.41e-10"
+  }
+}
