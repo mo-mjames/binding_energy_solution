@@ -1,3 +1,8 @@
+"""
+Module containing functions to calculate the binding energy of a pair or trio
+of particles.
+"""
+
 
 def calc_pair_binding_energy(separation_distance):
     """
@@ -26,3 +31,31 @@ def calc_pair_binding_energy(separation_distance):
     )
 
     return pair_binding_energy
+
+
+def calc_trio_binding_energy(separation_1_2, separation_1_3, separation_2_3):
+    """
+    Calculate the binding energy of a trio of particles separated by given distances.
+
+    Parameters
+    ----------
+    separation_1_2 : float
+        The distance between particles 1 and 2 in metres.
+    separation_1_3 : float
+        The distance between particles 1 and 3 in metres.
+    separation_2_3 : float
+        The distance between particles 2 and 3 in metres.
+
+    Returns
+    -------
+    float
+        The binding energy of the trio of particles in joules.
+    """
+
+    binding_energy_1_2 = calc_pair_binding_energy(separation_1_2)
+    binding_energy_1_3 = calc_pair_binding_energy(separation_1_3)
+    binding_energy_2_3 = calc_pair_binding_energy(separation_2_3)
+
+    trio_binding_energy = binding_energy_1_2 + binding_energy_1_3 + binding_energy_2_3
+
+    return trio_binding_energy
