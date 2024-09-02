@@ -6,7 +6,11 @@ of particles.
 from binding_energy_solution.constants import EPSILON, SIGMA, SEP_1_2, SEP_1_3, SEP_2_3
 
 
-def calc_pair_binding_energy(epsilon, sigma, separation_distance):
+def calc_pair_binding_energy(
+        epsilon: float,
+        sigma: float,
+        separation_distance: float
+        ):
     """
     Calculate the binding energy of a pair of particles separated by a given
     distance.
@@ -33,8 +37,12 @@ def calc_pair_binding_energy(epsilon, sigma, separation_distance):
 
 
 def calc_trio_binding_energy(
-    epsilon, sigma, separation_1_2, separation_1_3, separation_2_3
-):
+    epsilon: float,
+    sigma: float,
+    separation_1_2: float,
+    separation_1_3: float,
+    separation_2_3:float
+    ):
     """
     Calculate the binding energy of a trio of particles separated by given
     distances.
@@ -64,11 +72,11 @@ def calc_trio_binding_energy(
 def main():
     """main funtion to call functions"""
     result_trio_binding_energy = calc_trio_binding_energy(
-        epsilon=EPSILON,
-        sigma=SIGMA,
-        separation_1_2=SEP_1_2,
-        separation_1_3=SEP_1_3,
-        separation_2_3=SEP_2_3,
+        EPSILON,
+        SIGMA,
+        SEP_1_2,
+        SEP_1_3,
+        SEP_2_3,
     )
     print(result_trio_binding_energy)
 
