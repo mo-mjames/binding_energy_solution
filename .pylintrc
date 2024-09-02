@@ -1,2 +1,4 @@
 [MAIN]
 source-roots=src/
+[MESSAGES CONTROL]
+disable = no-value-for-parameter
