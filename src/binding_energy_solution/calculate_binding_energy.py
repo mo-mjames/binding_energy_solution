@@ -64,11 +64,11 @@ def calc_trio_binding_energy(
 def main():
     """main funtion to call functions"""
     result_trio_binding_energy = calc_trio_binding_energy(
-        EPSILON,
-        SIGMA,
-        SEP_1_2,
-        SEP_1_3,
-        SEP_2_3,
+        epsilon=EPSILON,
+        sigma=SIGMA,
+        separation_1_2=SEP_1_2,
+        separation_1_3=SEP_1_3,
+        separation_2_3=SEP_2_3,
     )
     print(result_trio_binding_energy)
 
