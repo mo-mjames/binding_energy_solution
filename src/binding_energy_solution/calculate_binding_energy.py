@@ -2,9 +2,9 @@
 Module containing functions to calculate the binding energy of a pair or trio
 of particles.
 """
-import binding_energy_solution.constants as constants 
 
-def calc_pair_binding_energy(epsilon, sigma, separation_distance):
+
+def calc_pair_binding_energy(separation_distance):
     """
     Calculate the binding energy of a pair of particles separated by a given distance.
 
@@ -19,6 +19,10 @@ def calc_pair_binding_energy(epsilon, sigma, separation_distance):
         The binding energy of the pair of particles in joules.
     """
 
+    # Constants
+    epsilon = 1.65e-21  # J
+    sigma = 3.41e-10  # m
+
     # Calculate the binding energy
     pair_binding_energy = (
         4
@@ -29,7 +33,7 @@ def calc_pair_binding_energy(epsilon, sigma, separation_distance):
     return pair_binding_energy
 
 
-def calc_trio_binding_energy(epsilon, sigma, separation_1_2, separation_1_3, separation_2_3):
+def calc_trio_binding_energy(separation_1_2, separation_1_3, separation_2_3):
     """
     Calculate the binding energy of a trio of particles separated by given distances.
 
@@ -48,23 +52,10 @@ def calc_trio_binding_energy(epsilon, sigma, separation_1_2, separation_1_3, sep
         The binding energy of the trio of particles in joules.
     """
 
-    binding_energy_1_2 = calc_pair_binding_energy(epsilon, sigma, separation_1_2)
-    binding_energy_1_3 = calc_pair_binding_energy(epsilon, sigma, separation_1_3)
-    binding_energy_2_3 = calc_pair_binding_energy(epsilon, sigma, separation_2_3)
+    binding_energy_1_2 = calc_pair_binding_energy(separation_1_2)
+    binding_energy_1_3 = calc_pair_binding_energy(separation_1_3)
+    binding_energy_2_3 = calc_pair_binding_energy(separation_2_3)
 
     trio_binding_energy = binding_energy_1_2 + binding_energy_1_3 + binding_energy_2_3
 
     return trio_binding_energy
-
-def main():
-    result_trio_binding_energy = calc_trio_binding_energy(
-        constants.EPSILON,
-        constants.SIGMA,
-        constants.SEP_1_2,
-        constants.SEP_1_3,
-        constants.SEP_2_3,
-    )
-    print(result_trio_binding_energy)
-
-if __name__ == "__main__":
-    main()
